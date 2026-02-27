@@ -1,22 +1,23 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
-NAME = push_swap
+NAME = fractol 
 SRCDIR = src/
 OBJDIR = build/
-INCLUDE = -Iinclude -Ilibft/include
+INCLUDE = -Iincludes -Ilibft/include
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
-LDFLAGS = -L$(LIBFT_DIR)
-LDLIBS = -lft
+LDFLAGS = -L$(LIBFT_DIR) -L.
+LDLIBS = -lft -lmlx
 
 OBJ = main.o \
+	mlx_utils/window_utils.o\
 
 OBJS = $(addprefix $(OBJDIR), $(OBJ))
 
 all: $(NAME)
 
 $(OBJDIR):
-	mkdir -p $@
+	mkdir -p $@/mlx_utils/
 
 $(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LDLIBS) -o $@
