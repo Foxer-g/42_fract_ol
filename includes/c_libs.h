@@ -6,14 +6,14 @@
 /*   By: toespino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 21:30:54 by toespino          #+#    #+#             */
-/*   Updated: 2026/02/27 21:32:22 by toespino         ###   ########.fr       */
+/*   Updated: 2026/02/28 00:25:35 by toespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef C_LIBS_H
 # define C_LIBS_H
-#include <stdint.h>
-#include <stdbool.h>
-#include "libft.h"
+# include <stdint.h>
+# include <stdbool.h>
+# include "libft.h"
 
 #endif
