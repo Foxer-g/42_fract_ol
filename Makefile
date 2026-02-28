@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra -g 
 NAME = fractol 
 SRCDIR = src/
 OBJDIR = build/
@@ -7,9 +7,10 @@ INCLUDE = -Iincludes -Ilibft/include
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 LDFLAGS = -L$(LIBFT_DIR) -L.
-LDLIBS = -lft -lmlx
+LDLIBS = -lft -lmlx -lXext -lX11
 
 OBJ = main.o \
+	utils.o \
 	mlx_utils/window_utils.o\
 
 OBJS = $(addprefix $(OBJDIR), $(OBJ))
