@@ -21,7 +21,7 @@ $(OBJDIR):
 	mkdir -p $@/mlx_utils/
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LDLIBS) -o $@
+	$(CC) $(CFLAGS) $(OBJS)  -o $@ $(LDFLAGS) $(LDLIBS)
 
 $(LIBFT):
 	make -C $(LIBFT_DIR) -j
