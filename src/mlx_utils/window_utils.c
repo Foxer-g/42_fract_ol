@@ -6,7 +6,7 @@
 /*   By: toespino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 23:56:13 by toespino          #+#    #+#             */
-/*   Updated: 2026/02/28 00:26:39 by toespino         ###   ########.fr       */
+/*   Updated: 2026/03/01 20:58:59 by toespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,19 @@ void	put_pixel(t_mlx mlx, int32_t x, int32_t y, int32_t color)
 void	push_image(t_mlx mlx)
 {
 	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img.img, 0, 0);
+}
+
+void	destroy_mlx(t_mlx *mlx)
+{
+	mlx_destroy_image(mlx->mlx, mlx->img.img);
+	mlx_destroy_window(mlx->mlx, mlx->win);
+	mlx_destroy_display(mlx->mlx);
+	free(mlx->mlx);
+	mlx = NULL;
+}
+
+int32_t	stop_loop(t_mlx *mlx)
+{
+	mlx_loop_end(mlx->mlx);
+	return (0);
 }
