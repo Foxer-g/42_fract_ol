@@ -6,7 +6,7 @@
 /*   By: toespino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 19:28:43 by toespino          #+#    #+#             */
-/*   Updated: 2026/03/01 22:07:00 by toespino         ###   ########.fr       */
+/*   Updated: 2026/03/02 16:40:18 by toespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define BAD_AC "Input must contain only fractal type and 2 floats for Julia\n"
 # define MANDEL "mandelbrot do not take any parameters\n"
 # define JULIA "julia need two floats as parameters\n"
+# define MAL_ERR "failed memory allocation\n"
 
 typedef struct s_img
 {
@@ -46,8 +47,10 @@ void	put_pixel(t_mlx mlx, int32_t x, int32_t y, int32_t color);
 void	push_image(t_mlx mlx);
 void	destroy_mlx(t_mlx *mlx);
 int32_t	stop_loop(t_mlx *mlx);
+int32_t	key_pressed(int32_t	keycode, t_mlx *mlx);
 
 void	error_message(int32_t error_code);
 void	input_check(int32_t ac, char **av);
+double	ft_atod(char *input);
 
 #endif

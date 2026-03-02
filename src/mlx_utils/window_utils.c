@@ -6,7 +6,7 @@
 /*   By: toespino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 23:56:13 by toespino          #+#    #+#             */
-/*   Updated: 2026/03/01 20:58:59 by toespino         ###   ########.fr       */
+/*   Updated: 2026/03/02 16:40:33 by toespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,12 @@ void	destroy_mlx(t_mlx *mlx)
 int32_t	stop_loop(t_mlx *mlx)
 {
 	mlx_loop_end(mlx->mlx);
+	return (0);
+}
+
+int32_t	key_pressed(int32_t keycode, t_mlx *mlx)
+{
+	if (keycode == XK_Escape)
+		stop_loop(mlx);
 	return (0);
 }
