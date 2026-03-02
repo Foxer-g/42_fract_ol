@@ -12,6 +12,8 @@ LDLIBS = -lft -lmlx -lXext -lX11
 OBJ = main.o \
 	utils.o \
 	mlx_utils/window_utils.o\
+	draw_fractal.o \
+	math.o \
 
 OBJS = $(addprefix $(OBJDIR), $(OBJ))
 

@@ -6,7 +6,7 @@
 /*   By: toespino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 19:28:43 by toespino          #+#    #+#             */
-/*   Updated: 2026/03/02 16:40:18 by toespino         ###   ########.fr       */
+/*   Updated: 2026/03/02 20:46:29 by toespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 # define HEIGHT	720
 # define LENGHT 1280
 # define WINDOW_NAME "Fract\'ol"
+# define ZOOM_F 0.1
+# define PRECISION 10
+# define LIMIT 4
+
+# define COLOR_1 0x000000
+# define COLOR_2 0x985629
+
 # define ERROR "\e[31mError : \e[0m"
 # define BAD_AC "Input must contain only fractal type and 2 floats for Julia\n"
 # define MANDEL "mandelbrot do not take any parameters\n"
@@ -35,11 +42,20 @@ typedef struct s_img
 	int32_t	e;
 }	t_img;
 
+typedef struct s_cplx
+{
+	double	r;
+	double	i;
+}	t_cplx;
+
 typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
+	double	zoom;
+	t_cplx	c;
 	t_img	img;
+	int32_t	type;
 }	t_mlx;
 
 t_mlx	better_mlx_init(void);
@@ -48,9 +64,16 @@ void	push_image(t_mlx mlx);
 void	destroy_mlx(t_mlx *mlx);
 int32_t	stop_loop(t_mlx *mlx);
 int32_t	key_pressed(int32_t	keycode, t_mlx *mlx);
+int32_t	mouse_input(int32_t mouse_button, t_mlx *mlx);
 
 void	error_message(int32_t error_code);
 void	input_check(int32_t ac, char **av);
 double	ft_atod(char *input);
+
+double	lerp(double unscaled, double new_min, double new_max, double old_max);
+t_cplx	add_cplx(t_cplx c1, t_cplx c2);
+t_cplx	square_cplx(t_cplx c);
+
+void	draw_fractal(t_mlx *mlx);
 
 #endif
