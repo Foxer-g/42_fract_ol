@@ -6,7 +6,7 @@
 /*   By: toespino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 21:38:26 by toespino          #+#    #+#             */
-/*   Updated: 2026/03/02 02:47:13 by toespino         ###   ########.fr       */
+/*   Updated: 2026/03/02 15:46:07 by toespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,38 @@ void	error_message(int32_t error_code)
 	exit(error_code);
 }
 
+void	ft_isdouble(char *input)
+{
+	int32_t	i;
+
+	i = 0;
+	while (input[i] && ft_isspace(input[i]))
+		i++;
+	while (input[i] && ft_issignednum(input[i]))
+		i++;
+	if (!input[i])
+		return ;
+	else if (input[i] == '.')
+		i++;
+	else
+		error_message(3);
+	while (input[i] && ft_isdigit(input[i]))
+		i++;
+	if (input[i])
+		error_message(3);
+}
+
 void	input_check(int32_t ac, char **av)
 {
 	if (ft_strncmp(av[0], "mandelbrot", ft_strlen(av[0])) == 0 && ac != 2)
 		error_message(2);
 	else if (ft_strncmp(av[0], "julia", ft_strlen(av[0])) == 0 && ac != 4)
 		error_message(3);
+	else if (ft_strncmp(av[0], "julia", ft_strlen(av[0])) == 0 && ac == 4)
+	{
+		ft_isdouble(av[1]);
+		ft_isdouble(av[2]);
+	}
 }
 
 double	ft_atod(char *input)
@@ -54,9 +80,9 @@ double	ft_atod(char *input)
 	}
 	while (ft_isdigit(input[i]))
 		res = res * 10 + input[i++] - 48;
-	while (input[++i] && ft_isdigit(input[i]))
+	while (input[i] && ft_isdigit(input[i]))
 	{
-		res += p_comma * (input[i] - 48);
+		res += p_comma * (input[i++] - 48);
 		p_comma /= 10;
 	}
 	return (res * sign);
