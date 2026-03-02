@@ -6,7 +6,7 @@
 /*   By: toespino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 21:38:26 by toespino          #+#    #+#             */
-/*   Updated: 2026/03/01 22:04:36 by toespino         ###   ########.fr       */
+/*   Updated: 2026/03/02 02:47:13 by toespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,33 @@ void	input_check(int32_t ac, char **av)
 		error_message(2);
 	else if (ft_strncmp(av[0], "julia", ft_strlen(av[0])) == 0 && ac != 4)
 		error_message(3);
+}
+
+double	ft_atod(char *input)
+{
+	double	res;
+	double	p_comma;
+	int32_t	sign;
+	int32_t	i;
+
+	res = 0;
+	sign = 1;
+	i = 0;
+	p_comma = 0.1;
+	while (ft_isspace(input[i]))
+		i++;
+	if (input[i] == '-' || input[i] == '+')
+	{
+		if (input[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (ft_isdigit(input[i]))
+		res = res * 10 + input[i++] - 48;
+	while (input[++i] && ft_isdigit(input[i]))
+	{
+		res += p_comma * (input[i] - 48);
+		p_comma /= 10;
+	}
+	return (res * sign);
 }
