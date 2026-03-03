@@ -6,7 +6,7 @@
 /*   By: toespino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 17:19:20 by toespino          #+#    #+#             */
-/*   Updated: 2026/03/02 20:45:24 by toespino         ###   ########.fr       */
+/*   Updated: 2026/03/03 18:19:52 by toespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	calculate_fractal_pixel(t_mlx *mlx, int32_t x, int32_t y)
 	int32_t	i;
 	int32_t	color;
 
-	pixel.r = (lerp(x, -2, 2, LENGHT) * mlx->zoom);
-	pixel.i = (lerp(x, -2, 2, HEIGHT) * mlx->zoom);
-	if (!mlx->type)
+	pixel.r = (lerp(x, -2, 2, LENGTH) * mlx->zoom);
+	pixel.i = (lerp(y, 2, -2, HEIGHT) * mlx->zoom);
+	if (mlx->type == 0)
 		mlx->c = pixel;
 	i = 0;
 	while (i < PRECISION)
@@ -29,12 +29,12 @@ void	calculate_fractal_pixel(t_mlx *mlx, int32_t x, int32_t y)
 		if ((pixel.r * pixel.r) + (pixel.i * pixel.i) > LIMIT)
 		{
 			color = lerp(i, COLOR_1, COLOR_2, PRECISION);
-			put_pixel(*mlx, x, y, color);
+			put_pixel(mlx, x, y, color);
 			return ;
 		}
 		i++;
 	}
-	put_pixel(*mlx, x, y, COLOR_2);
+	put_pixel(mlx, x, y, COLOR_2);
 }
 
 void	draw_fractal(t_mlx *mlx)
@@ -43,15 +43,16 @@ void	draw_fractal(t_mlx *mlx)
 	int32_t	y;
 
 	x = 0;
-	while (x <= LENGHT)
+	y = 0;
+	while (x < LENGTH)
 	{
-		y = 0;
-		while (y <= HEIGHT)
+		while (y < HEIGHT)
 		{
 			calculate_fractal_pixel(mlx, x, y);
 			y++;
 		}
 		x++;
+		y = 0;
 	}
-	push_image(*mlx);
+	push_image(mlx);
 }
