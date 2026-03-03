@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g 
+CFLAGS = -Wall -Werror -Wextra -O3 -g 
 NAME = fractol 
 SRCDIR = src/
 OBJDIR = build/
@@ -7,11 +7,12 @@ INCLUDE = -Iincludes -Ilibft/include
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 LDFLAGS = -L$(LIBFT_DIR) -L.
-LDLIBS = -lft -lmlx -lXext -lX11
+LDLIBS = -lft -lXext -lX11
 
 OBJ = main.o \
 	utils.o \
 	mlx_utils/window_utils.o\
+	mlx_utils/input_management.o \
 	draw_fractal.o \
 	math.o \
 
@@ -23,7 +24,7 @@ $(OBJDIR):
 	mkdir -p $@/mlx_utils/
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS)  -o $@ $(LDFLAGS) $(LDLIBS)
+	$(CC) $(CFLAGS) $(OBJS) libmlx.a  -o $@ $(LDFLAGS) $(LDLIBS)
 
 $(LIBFT):
 	make -C $(LIBFT_DIR) -j

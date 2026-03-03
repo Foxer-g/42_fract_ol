@@ -6,7 +6,7 @@
 /*   By: toespino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 19:54:27 by toespino          #+#    #+#             */
-/*   Updated: 2026/03/02 20:47:06 by toespino         ###   ########.fr       */
+/*   Updated: 2026/03/03 17:24:14 by toespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int32_t	main(int32_t ac, char **av)
 		error_message(1);
 	av++;
 	input_check(ac, av);
-	mlx = better_mlx_init();
+	better_mlx_init(&mlx);
 	if (!ft_strncmp(av[0], "julia", ft_strlen(av[0])))
 	{
 		mlx.c.r = ft_atod(av[1]);

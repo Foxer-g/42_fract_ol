@@ -6,7 +6,7 @@
 /*   By: toespino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 21:38:26 by toespino          #+#    #+#             */
-/*   Updated: 2026/03/02 16:24:55 by toespino         ###   ########.fr       */
+/*   Updated: 2026/03/03 18:39:52 by toespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	error_message(int32_t error_code)
 		write(2, ERROR JULIA, (ft_strlen(ERROR) + ft_strlen(JULIA)));
 	else if (error_code == 4)
 		write(2, ERROR MAL_ERR, (ft_strlen(ERROR) + ft_strlen(MAL_ERR)));
+	else if (error_code == 5)
+		write(2, ERROR MLX_ERR, (ft_strlen(ERROR) + ft_strlen(MLX_ERR)));
 	else
 		write(2, ERROR "What ?\n", (ft_strlen(ERROR) + 7));
 	exit(error_code);
@@ -75,11 +77,8 @@ double	ft_atod(char *input)
 	while (ft_isspace(input[i]))
 		i++;
 	if (input[i] == '-' || input[i] == '+')
-	{
-		if (input[i] == '-')
+		if (input[i++] == '-')
 			sign = -1;
-		i++;
-	}
 	while (ft_isdigit(input[i]))
 		res = res * 10 + input[i++] - 48;
 	i++;
