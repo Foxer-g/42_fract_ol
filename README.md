@@ -16,10 +16,10 @@ fract'ol is only develloped to generate :
 
 The output is generated as a window through the **MLX**
 
-Mandelbrot :
+### Mandelbrot :
 ![](https://github.com/Foxer-g/42_fract_ol/blob/main/fractol_mandelbrot.png)
 
-Julia :
+### Julia :
 ![](https://github.com/Foxer-g/42_fract_ol/blob/main/fractol_julia.png)
 
 ## PROGRAM INTERACTION :
