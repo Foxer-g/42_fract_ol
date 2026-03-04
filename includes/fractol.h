@@ -6,14 +6,14 @@
 /*   By: toespino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 19:28:43 by toespino          #+#    #+#             */
-/*   Updated: 2026/03/04 07:38:38 by toespino         ###   ########.fr       */
+/*   Updated: 2026/03/04 12:40:01 by toespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 # include "c_libs.h"
-# include "mlx.h"
+# include ".mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 
