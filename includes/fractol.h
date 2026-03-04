@@ -6,7 +6,7 @@
 /*   By: toespino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 19:28:43 by toespino          #+#    #+#             */
-/*   Updated: 2026/03/03 19:56:37 by toespino         ###   ########.fr       */
+/*   Updated: 2026/03/04 07:38:38 by toespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define LENGTH 1080
 # define WINDOW_NAME "Fract\'ol"
 # define ZOOM_F 0.1
-# define PRECISION 40
+# define PRECISION 30
 # define LIMIT 4
 
 # define COLOR_1 0x000000
